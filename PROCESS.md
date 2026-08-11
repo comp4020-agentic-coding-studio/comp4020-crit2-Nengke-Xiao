@@ -78,6 +78,24 @@ one coherent site rather than nine independently styled ones.
    item shouldn't look different just because you've been to that page before
    ([`efe08ef`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-Nengke-Xiao/commit/efe08ef)).
 
+5. **Tried the real logo, then backed it out.** I briefly swapped the text
+   wordmark for SQLite's actual logo asset, hotlinked from sqlite.org rather
+   than redistributed, to keep the trademark concern moment 4 raised out of
+   this repo. But seen in place on the header bar it didn't read as an
+   improvement — it looked worse than the plain wordmark it replaced — so I
+   reverted both the logo change and its `PROCESS.md` entry rather than
+   defending a design that wasn't working just because it was already built.
+   Text wins here on its own terms, not merely as a trademark-safe fallback.
+   While simplifying it back, I also dropped the "— a redesign concept"
+   tagline next to it: the footer disclaimer already states that in full, so
+   the tagline in the header was doing the same job twice, and on narrow
+   viewports it existed only to be hidden by its own media query so it
+   wouldn't crowd the nav toggle. The left side of the header now reads
+   plain "SQLite", with the now-unused `wordmark-tag` styles and
+   `--color-header-text-muted` token removed alongside it
+   ([`6e02f9c`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-Nengke-Xiao/commit/6e02f9c),
+   [`4b7b0e3`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-Nengke-Xiao/commit/4b7b0e3)).
+
 ## Before you ship
 
 `pnpm check:evidence` verifies your citations resolve to real commits, that the
