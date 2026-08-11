@@ -12,6 +12,9 @@
   --color-text: #14181a;
   --color-text-secondary: #4b5559;
   --color-heading: var(--color-primary);
+  --color-header-bg: var(--color-primary);
+  --color-header-text: #fff;
+  --color-header-text-muted: #c3dbe3;
   --font-sans: verdana, "Segoe UI", system-ui, sans-serif;
   --font-mono: ui-monospace, "SF Mono", menlo, consolas, monospace;
   --text-sm: 0.875rem;
@@ -149,9 +152,13 @@ h3 {
   white-space: nowrap;
 }
 
-/* Header */
+/* Header — a full-width brand bar rather than a plain nav strip, so the
+   site reads as SQLite's own documentation site rather than a generic
+   template. Its teal background is constant across colour schemes, same
+   as --color-primary itself, so its own text colours are fixed too rather
+   than pulled from the light/dark tokens. */
 .site-header {
-  border-bottom: 1px solid var(--color-border);
+  background: var(--color-header-bg);
 }
 
 .site-header-bar {
@@ -168,14 +175,14 @@ h3 {
 .wordmark {
   font-size: var(--text-lg);
   font-weight: bold;
-  color: var(--color-heading);
+  color: var(--color-header-text);
   text-decoration: none;
 }
 
 .wordmark-tag {
   font-size: var(--text-sm);
   font-weight: normal;
-  color: var(--color-text-secondary);
+  color: var(--color-header-text-muted);
 }
 
 .nav-toggle {
@@ -183,9 +190,9 @@ h3 {
   align-items: center;
   min-height: 2.75rem;
   font: inherit;
-  color: var(--color-text);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  color: var(--color-header-text);
+  background: rgb(255 255 255 / 12%);
+  border: 1px solid rgb(255 255 255 / 40%);
   border-radius: var(--radius);
   padding: var(--space-2) var(--space-3);
   cursor: pointer;
@@ -200,7 +207,9 @@ h3 {
   padding: 0;
 }
 
-.nav-list a {
+.nav-list a,
+.nav-list a:visited {
+  color: var(--color-header-text);
   text-decoration: none;
 }
 
@@ -211,6 +220,11 @@ h3 {
 .nav-list a[aria-current="page"] {
   font-weight: bold;
   text-decoration: underline;
+}
+
+.site-header a:focus-visible,
+.site-header button:focus-visible {
+  outline-color: var(--color-header-text);
 }
 
 @media (width <= 640px) {
