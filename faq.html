@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ — SQLite</title>
+    <meta
+      name="description"
+      content="Answers to the questions newcomers ask most often about SQLite: concurrency, size limits, licensing, and choosing it for a project."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!--#include header-->
+    <main id="main">
+      <article class="prose">
+        <h1>Frequently asked questions</h1>
+        <p class="lede">
+          Grouped by what people usually want to know before they commit to
+          using SQLite. Click a question to expand it.
+        </p>
+
+        <section class="faq-group" aria-labelledby="faq-choosing">
+          <h2 id="faq-choosing">Choosing SQLite</h2>
+
+          <details class="faq-item">
+            <summary>Is SQLite a client-server database?</summary>
+            <p>
+              No. There's no separate server process to start, configure, or
+              keep running. The engine is a library linked directly into
+              your application, and the database is a single file it reads
+              and writes.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Is SQLite "real" enough for production use?</summary>
+            <p>
+              Yes — it's one of the most widely deployed pieces of software
+              in the world, running inside billions of phones, browsers,
+              and desktop applications, with a test suite built around
+              simulating failure on every allocation and write. See
+              <a href="./about.html">About</a> for how that testing works.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              Can I use SQLite in a commercial, closed-source product?
+            </summary>
+            <p>
+              Yes. SQLite's source code is dedicated to the public domain,
+              so there's no licence to comply with and no royalty owed,
+              commercial or otherwise.
+            </p>
+          </details>
+        </section>
+
+        <section class="faq-group" aria-labelledby="faq-using">
+          <h2 id="faq-using">Using it day to day</h2>
+
+          <details class="faq-item">
+            <summary>How do I use SQLite from my language of choice?</summary>
+            <p>
+              Most languages either bundle a driver or have a well-known
+              third-party one. See
+              <a href="./get-started.html">Get Started</a> for the common
+              ones, or check your language's package index.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              What's the difference between INTEGER PRIMARY KEY and a
+              regular rowid?
+            </summary>
+            <p>
+              Every table has an implicit 64-bit rowid unless it's declared
+              <code>WITHOUT ROWID</code>. A column typed exactly
+              <code>INTEGER PRIMARY KEY</code> becomes an alias for that
+              rowid, so it's faster to look up and doesn't need extra
+              storage of its own.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Does SQLite enforce foreign keys?</summary>
+            <p>
+              It can, but foreign key enforcement is off by default for
+              backwards compatibility. Turn it on per-connection with
+              <code>PRAGMA foreign_keys = ON;</code>.
+            </p>
+          </details>
+        </section>
+
+        <section class="faq-group" aria-labelledby="faq-scale">
+          <h2 id="faq-scale">Concurrency and scale</h2>
+
+          <details class="faq-item">
+            <summary>
+              Can multiple applications read and write the same database at
+              once?
+            </summary>
+            <p>
+              Multiple readers can access a database simultaneously, and in
+              write-ahead logging mode a single writer can proceed while
+              readers keep working. SQLite serialises writes rather than
+              supporting concurrent multi-writer access the way a
+              client-server database does — see
+              <a href="./documentation.html">Documentation</a> for the
+              write-ahead logging guide.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>How large can a SQLite database get?</summary>
+            <p>
+              Up to 281 terabytes, limited by the maximum page count and
+              page size the format allows. In practice, disk space runs out
+              long before that theoretical ceiling matters.
+            </p>
+          </details>
+
+          <details class="faq-item">
+            <summary>My query is slow — where do I start?</summary>
+            <p>
+              Check <code>EXPLAIN QUERY PLAN</code> against your query
+              first; a missing index on a column used in
+              <code>WHERE</code> or <code>JOIN</code> is the most common
+              cause. The
+              <a href="./sql-syntax.html">SQL syntax reference</a> covers
+              <code>CREATE INDEX</code>.
+            </p>
+          </details>
+        </section>
+
+        <p>
+          Didn't find your question? The
+          <a href="./support.html">Support page</a> has ways to ask.
+        </p>
+      </article>
+    </main>
+    <!--#include footer-->
+  </body>
+</html>
