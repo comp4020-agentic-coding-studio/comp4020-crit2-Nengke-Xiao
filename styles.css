@@ -293,7 +293,11 @@ img {
 }
 
 .button-primary:hover {
-  background: var(--color-accent);
+  /* Swapping to --color-accent here used to drop white-on-background
+     contrast to ~3.2:1, under the 4.5:1 AA text minimum. Brightening the
+     existing colour keeps it dark enough to stay above that in both
+     colour schemes instead of picking a second colour to re-check. */
+  filter: brightness(1.15);
 }
 
 .button-secondary {
