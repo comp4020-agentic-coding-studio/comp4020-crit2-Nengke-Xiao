@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About SQLite</title>
+    <meta
+      name="description"
+      content="The history, design philosophy, and testing rigor behind SQLite, and who maintains it today."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!--#include header-->
+    <main id="main">
+      <article class="prose">
+        <h1>About SQLite</h1>
+        <p class="lede">
+          SQLite is a small, fast, self-contained SQL database engine. It
+          isn't a client that talks to a database server — it <em>is</em> the
+          database, compiled directly into whatever application uses it.
+        </p>
+
+        <h2>How it started</h2>
+        <p>
+          D. Richard Hipp created SQLite in 2000 while working on software
+          for guided-missile destroyers, where a full client-server database
+          was more infrastructure than the job needed. He built an engine
+          that could run entirely inside the application process instead,
+          reading and writing a single ordinary file. That constraint —
+          no server, no setup, no separate process to keep alive — has
+          shaped every design decision since.
+        </p>
+
+        <h2>Design philosophy</h2>
+        <p>
+          Most databases ask you to trade reliability against simplicity.
+          SQLite's founding bet was that an embedded database didn't have to
+          make that trade: it could be small enough to compile into a
+          resource-constrained device, fast enough for latency-sensitive
+          reads and writes, and still guarantee the same ACID transaction
+          guarantees as a full server. Decades of production use — inside
+          browsers, phones, and operating systems — is the evidence that bet
+          paid off.
+        </p>
+
+        <h2>Tested more than most flight software</h2>
+        <p>
+          Because SQLite runs inside applications it can't easily be
+          patched around, its test suite is unusually aggressive: it
+          includes fault-injection tests that simulate out-of-memory
+          conditions and I/O errors on every single allocation and write,
+          boundary and fuzz testing, and a full run under multiple static
+          analyzers before every release. The project publishes 100% branch
+          test coverage as a standing target, not a one-off milestone.
+        </p>
+
+        <h2>Public domain, by design</h2>
+        <p>
+          SQLite's source code is dedicated to the public domain. There's no
+          licence to review, no attribution requirement, and no royalty —
+          you can vendor it into a commercial product exactly as freely as
+          into a hobby project.
+        </p>
+
+        <h2>Who maintains it</h2>
+        <p>
+          A small core team maintains SQLite's code and test infrastructure.
+          Ongoing development is funded partly through the SQLite
+          Consortium, a group of companies that rely on SQLite in their own
+          products, and partly by individual sponsors.
+          <a href="./support.html">See how funding and support work.</a>
+        </p>
+      </article>
+    </main>
+    <!--#include footer-->
+  </body>
+</html>
