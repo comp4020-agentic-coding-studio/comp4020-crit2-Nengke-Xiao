@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download SQLite</title>
+    <meta
+      name="description"
+      content="Choose how to get SQLite: precompiled binaries, a package manager, or source code, and how to verify what you downloaded."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!--#include header-->
+    <main id="main">
+      <article class="prose">
+        <h1>Download SQLite</h1>
+        <p class="lede">
+          There isn't one "download SQLite" button — the right file depends
+          on how you plan to use it. This page helps you pick, then hands
+          off to the current files and checksums on the official download
+          page.
+        </p>
+
+        <h2>Precompiled binaries</h2>
+        <p>
+          For Windows, macOS, and Linux, precompiled binaries of the
+          <code>sqlite3</code> command-line shell and the core library are
+          rebuilt for every release. Grab the one matching your platform
+          and CPU architecture from the
+          <a
+            class="external-link"
+            href="https://www.sqlite.org/download.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            >official download page<span class="visually-hidden"
+              > (opens in a new tab)</span
+            ></a
+          >, which always lists the current release.
+        </p>
+
+        <h2>A package manager is usually easier</h2>
+        <p>
+          If you just want the CLI shell to try things out, your system's
+          package manager already has it:
+        </p>
+        <div class="code-block">
+          <pre><code># macOS (Homebrew)
+brew install sqlite
+
+# Debian / Ubuntu
+sudo apt install sqlite3
+
+# Fedora
+sudo dnf install sqlite</code></pre>
+        </div>
+        <p>
+          See <a href="./get-started.html">Get Started</a> for what to do
+          once it's installed.
+        </p>
+
+        <h2>Source code</h2>
+        <p>
+          SQLite's source is public domain and available as a single
+          "amalgamation" — the entire engine flattened into one C file — so
+          embedding it doesn't require a build system of its own. The
+          amalgamation and the full source tree are both on the
+          <a
+            class="external-link"
+            href="https://www.sqlite.org/download.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            >official download page<span class="visually-hidden"
+              > (opens in a new tab)</span
+            ></a
+          >.
+        </p>
+
+        <h2>Verifying a download</h2>
+        <p>
+          Every release publishes a SHA3-256 checksum alongside the file.
+          Compare it after downloading:
+        </p>
+        <div class="code-block">
+          <pre><code>shasum -a 256 sqlite-tools-linux-x64.zip</code></pre>
+        </div>
+        <p>
+          Match the output against the checksum listed next to the file on
+          the download page before you trust it.
+        </p>
+      </article>
+    </main>
+    <!--#include footer-->
+  </body>
+</html>
