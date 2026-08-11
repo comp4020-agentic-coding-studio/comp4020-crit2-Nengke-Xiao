@@ -58,6 +58,26 @@ one coherent site rather than nine independently styled ones.
    ([`8bdd7d7`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-Nengke-Xiao/commit/8bdd7d7),
    [`05e3772`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-Nengke-Xiao/commit/05e3772)).
 
+4. **A branded header bar, added to the existing bar rather than beside it.**
+   Asked for a full-width teal header echoing SQLite's own identity with the
+   nav "integrated ... if appropriate", I recoloured the existing
+   `.site-header` into that bar rather than stacking a second one above it —
+   a plain second bar would have added chrome without a clear job, working
+   against "clean and minimal" and "not a marketing hero." Because the header
+   is a shared partial, the same brand bar now renders on all nine pages, not
+   just behind the homepage hero, which also serves the "nav consistent
+   across every page" requirement. The wordmark stands in for a logo rather
+   than an image asset — consistent with the rest of the site's no-image-asset
+   pattern, and it avoids embedding a third-party trademarked logo file. That
+   meant re-checking contrast again: `--color-primary` and `var(--color-text)`
+   links are both too dark for the light nav text needed on a teal bar in
+   every colour scheme, so nav links and the mobile menu button got their own
+   fixed white-on-teal colours (~9.7:1) instead of inheriting the page's
+   scheme-aware tokens, and the visited-link tint was disabled for nav items
+   for the same reason `.button-secondary:visited` already ignores it — a nav
+   item shouldn't look different just because you've been to that page before
+   ([`efe08ef`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-Nengke-Xiao/commit/efe08ef)).
+
 ## Before you ship
 
 `pnpm check:evidence` verifies your citations resolve to real commits, that the
