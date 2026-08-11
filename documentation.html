@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation — SQLite</title>
+    <meta
+      name="description"
+      content="Start here for SQLite's reference material and guides: SQL syntax, the C/C++ API, data types, file format, and concurrency."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!--#include header-->
+    <main id="main">
+      <article class="prose">
+        <h1>Documentation</h1>
+        <p class="lede">
+          Two references cover the two ways most people touch SQLite —
+          writing SQL and embedding the engine — and the guides below cover
+          the concepts that come up once you're past the basics.
+        </p>
+
+        <h2>Reference</h2>
+        <ul class="tile-grid">
+          <li>
+            <a class="tile" href="./sql-syntax.html">
+              <h3>SQL syntax</h3>
+              <p>Every statement and expression SQLite accepts.</p>
+            </a>
+          </li>
+          <li>
+            <a class="tile" href="./c-api.html">
+              <h3>C/C++ API</h3>
+              <p>The functions you call to embed SQLite in your code.</p>
+            </a>
+          </li>
+        </ul>
+
+        <h2>Guides</h2>
+        <p>
+          These summarise concepts worth understanding before you rely on
+          SQLite in production; each links to the full, authoritative
+          write-up.
+        </p>
+        <ul class="card-grid">
+          <li class="card">
+            <h3>Data types</h3>
+            <p>
+              SQLite uses dynamic typing: a column's declared type is a
+              hint, not a constraint, and most values are stored using
+              whichever of five storage classes fits them best.
+              <a
+                class="external-link"
+                href="https://www.sqlite.org/datatype3.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Read the full guide<span class="visually-hidden"
+                  > (opens in a new tab)</span
+                ></a
+              >.
+            </p>
+          </li>
+          <li class="card">
+            <h3>File format</h3>
+            <p>
+              Every database is a single cross-platform file with a
+              documented, stable binary layout — which is also why SQLite
+              is a common choice for long-term archival.
+              <a
+                class="external-link"
+                href="https://www.sqlite.org/fileformat2.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Read the full guide<span class="visually-hidden"
+                  > (opens in a new tab)</span
+                ></a
+              >.
+            </p>
+          </li>
+          <li class="card">
+            <h3>Transactions &amp; concurrency</h3>
+            <p>
+              Transactions are ACID by default, and write-ahead logging
+              mode lets readers keep working while a write is in progress.
+              <a
+                class="external-link"
+                href="https://www.sqlite.org/lang_transaction.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Read the full guide<span class="visually-hidden"
+                  > (opens in a new tab)</span
+                ></a
+              >.
+            </p>
+          </li>
+          <li class="card">
+            <h3>Extending SQLite</h3>
+            <p>
+              Loadable extensions and user-defined functions let you add
+              behaviour — full-text search, geospatial queries, custom
+              collations — without forking the engine.
+              <a
+                class="external-link"
+                href="https://www.sqlite.org/loadext.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Read the full guide<span class="visually-hidden"
+                  > (opens in a new tab)</span
+                ></a
+              >.
+            </p>
+          </li>
+        </ul>
+
+        <h2>Still stuck?</h2>
+        <p>
+          The <a href="./faq.html">FAQ</a> answers the questions that come
+          up most, and the <a href="./support.html">Support page</a> has
+          ways to ask a real person.
+        </p>
+      </article>
+    </main>
+    <!--#include footer-->
+  </body>
+</html>

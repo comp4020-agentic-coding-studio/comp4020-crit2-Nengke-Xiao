@@ -430,3 +430,13 @@ img {
   color: var(--color-text-secondary);
   max-width: 36rem;
 }
+
+.prose .card-grid,
+.prose .tile-grid {
+  margin: var(--space-4) 0;
+}
+
+.prose .card p:last-child,
+.prose .tile p:last-child {
+  margin-bottom: 0;
+}
