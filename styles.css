@@ -14,6 +14,7 @@
   --color-heading: var(--color-primary);
   --color-header-bg: var(--color-primary);
   --color-header-text: #fff;
+  --color-header-text-muted: #c3dbe3;
   --font-sans: verdana, "Segoe UI", system-ui, sans-serif;
   --font-mono: ui-monospace, "SF Mono", menlo, consolas, monospace;
   --text-sm: 0.875rem;
@@ -178,6 +179,12 @@ h3 {
   text-decoration: none;
 }
 
+.wordmark-tag {
+  font-size: var(--text-sm);
+  font-weight: normal;
+  color: var(--color-header-text-muted);
+}
+
 .nav-toggle {
   display: none;
   align-items: center;
@@ -232,6 +239,15 @@ h3 {
   }
 
   .nav-list.is-collapsed {
+    display: none;
+  }
+}
+
+@media (width <= 480px) {
+  /* The tagline reads fine once there's room for it, but next to the
+     nav toggle on a phone-width header it just crowds the tap target —
+     the disclaimer already reappears in full in the footer. */
+  .wordmark-tag {
     display: none;
   }
 }
