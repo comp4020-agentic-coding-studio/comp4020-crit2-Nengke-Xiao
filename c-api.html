@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>C/C++ API — SQLite</title>
+    <meta
+      name="description"
+      content="The core functions for embedding SQLite in a C or C++ program: opening a database, preparing statements, binding parameters, and reading results."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!--#include header-->
+    <main id="main">
+      <article class="prose">
+        <h1>C/C++ API</h1>
+        <p class="lede">
+          SQLite is a C library first — every other language binding calls
+          through to this API. Most programs only ever need the five
+          functions below.
+        </p>
+
+        <h2>The core workflow</h2>
+        <p>Every query follows the same five steps:</p>
+        <div class="code-block">
+          <pre><code>sqlite3 *db;
+sqlite3_open("hello.db", &amp;db);
+
+sqlite3_stmt *stmt;
+sqlite3_prepare_v2(db, "SELECT id, name FROM users WHERE id = ?", -1, &amp;stmt, NULL);
+sqlite3_bind_int(stmt, 1, 1);
+
+while (sqlite3_step(stmt) == SQLITE_ROW) {
+  int id = sqlite3_column_int(stmt, 0);
+  const unsigned char *name = sqlite3_column_text(stmt, 1);
+}
+
+sqlite3_finalize(stmt);
+sqlite3_close(db);</code></pre>
+        </div>
+        <ul class="step-list">
+          <li>
+            <code>sqlite3_open</code> — opens (or creates) the database
+            file.
+          </li>
+          <li>
+            <code>sqlite3_prepare_v2</code> — compiles a SQL string into a
+            reusable statement.
+          </li>
+          <li>
+            <code>sqlite3_bind_*</code> — fills in <code>?</code>
+            placeholders safely, with no string concatenation.
+          </li>
+          <li>
+            <code>sqlite3_step</code> — runs the statement, one row at a
+            time.
+          </li>
+          <li>
+            <code>sqlite3_finalize</code> / <code>sqlite3_close</code> —
+            release the statement and the database handle.
+          </li>
+        </ul>
+
+        <h2>The convenience shortcut: sqlite3_exec</h2>
+        <p>
+          For a statement with no parameters and no rows to read back,
+          skip straight to a callback:
+        </p>
+        <div class="code-block">
+          <pre><code>sqlite3_exec(db, "CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT)",
+             NULL, NULL, NULL);</code></pre>
+        </div>
+
+        <h2>Checking for errors</h2>
+        <p>
+          Every function returns an integer result code. Anything other
+          than <code>SQLITE_OK</code> (or <code>SQLITE_ROW</code> /
+          <code>SQLITE_DONE</code> from <code>sqlite3_step</code>) is worth
+          checking:
+        </p>
+        <div class="code-block">
+          <pre><code>int rc = sqlite3_open("hello.db", &amp;db);
+if (rc != SQLITE_OK) {
+  fprintf(stderr, "open failed: %s\n", sqlite3_errmsg(db));
+}</code></pre>
+        </div>
+
+        <h2>Full example</h2>
+        <div class="code-block">
+          <pre><code>#include &lt;sqlite3.h&gt;
+#include &lt;stdio.h&gt;
+
+int main(void) {
+  sqlite3 *db;
+  sqlite3_stmt *stmt;
+
+  if (sqlite3_open("hello.db", &amp;db) != SQLITE_OK) {
+    fprintf(stderr, "open failed: %s\n", sqlite3_errmsg(db));
+    return 1;
+  }
+
+  sqlite3_exec(db,
+    "CREATE TABLE IF NOT EXISTS notes (id INTEGER PRIMARY KEY, body TEXT)",
+    NULL, NULL, NULL);
+
+  sqlite3_prepare_v2(db, "INSERT INTO notes (body) VALUES (?)", -1, &amp;stmt, NULL);
+  sqlite3_bind_text(stmt, 1, "hello from C", -1, SQLITE_STATIC);
+  sqlite3_step(stmt);
+  sqlite3_finalize(stmt);
+
+  sqlite3_close(db);
+  return 0;
+}</code></pre>
+        </div>
+
+        <h2>Going further</h2>
+        <p>
+          The <a href="./sql-syntax.html">SQL syntax reference</a> covers
+          what you can put inside <code>sqlite3_prepare_v2</code>, and the
+          <a
+            class="external-link"
+            href="https://www.sqlite.org/c3ref/intro.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            >full C API reference<span class="visually-hidden"
+              > (opens in a new tab)</span
+            ></a
+          >
+          documents every function this page skips — blob I/O,
+          user-defined functions, and the backup API among them.
+        </p>
+      </article>
+    </main>
+    <!--#include footer-->
+  </body>
+</html>
