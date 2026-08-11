@@ -3,19 +3,148 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>COMP4020 prototype</title>
+    <title>SQLite — a small, fast, self-contained SQL database engine</title>
+    <meta
+      name="description"
+      content="SQLite is a public-domain, embedded SQL database engine that ships inside browsers, phones, and countless applications. Get started, browse the docs, or download it."
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <!--#include header-->
     <main id="main">
-      <h1>COMP4020 prototype</h1>
-      <p data-testid="intro">
-        Replace this with your prototype. This week's brief is on the course website;
-        <code>spec/README.md</code> explains how the checks in this repo relate to it.
-      </p>
+      <section class="hero">
+        <div class="container hero-inner">
+          <h1>The database engine already running on your phone</h1>
+          <p class="hero-lead">
+            SQLite is a small, fast, self-contained SQL database engine with
+            no server to install and no configuration to get wrong. It's
+            embedded in more devices and applications than any other
+            database, from web browsers to operating systems to the app you
+            used this morning.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="./get-started.html"
+              >Get started</a
+            >
+            <a class="button button-secondary" href="./download.html"
+              >Download SQLite</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="why-sqlite" aria-labelledby="why-heading">
+        <div class="container">
+          <h2 id="why-heading">Why teams reach for SQLite</h2>
+          <ul class="card-grid">
+            <li class="card">
+              <h3>Self-contained</h3>
+              <p>
+                One library, no external dependencies, no server process to
+                manage. Your whole database is a single file.
+              </p>
+            </li>
+            <li class="card">
+              <h3>Zero-configuration</h3>
+              <p>
+                There's no setup wizard because there's nothing to set up.
+                Link the library and start reading and writing SQL.
+              </p>
+            </li>
+            <li class="card">
+              <h3>Cross-platform</h3>
+              <p>
+                The same database file works unmodified across Windows,
+                macOS, Linux, iOS, Android, and everything in between.
+              </p>
+            </li>
+            <li class="card">
+              <h3>ACID-compliant</h3>
+              <p>
+                Transactions are atomic, consistent, isolated, and durable —
+                even if the power fails mid-write.
+              </p>
+            </li>
+            <li class="card">
+              <h3>Public domain</h3>
+              <p>
+                No licence to negotiate and no attribution required. Use it
+                in anything, commercial or not.
+              </p>
+            </li>
+            <li class="card">
+              <h3>Deployed at scale</h3>
+              <p>
+                Billions of copies are in active use in browsers, operating
+                systems, and applications worldwide.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="release" aria-labelledby="release-heading">
+        <div class="container release-inner">
+          <div>
+            <h2 id="release-heading">Latest release</h2>
+            <p>
+              SQLite 3 is the current, actively maintained major version —
+              every release stays backwards-compatible with the database
+              files you already have. Precompiled binaries, source code, and
+              checksums for the current version are on the download page.
+            </p>
+          </div>
+          <a class="button button-primary" href="./download.html"
+            >View downloads</a
+          >
+        </div>
+      </section>
+
+      <section class="explore-docs" aria-labelledby="explore-heading">
+        <div class="container">
+          <h2 id="explore-heading">Explore the documentation</h2>
+          <ul class="tile-grid">
+            <li>
+              <a class="tile" href="./documentation.html">
+                <h3>Documentation hub</h3>
+                <p>Start here for guides, references, and how-tos.</p>
+              </a>
+            </li>
+            <li>
+              <a class="tile" href="./sql-syntax.html">
+                <h3>SQL syntax</h3>
+                <p>The statements and expressions SQLite understands.</p>
+              </a>
+            </li>
+            <li>
+              <a class="tile" href="./c-api.html">
+                <h3>C/C++ API</h3>
+                <p>Embed SQLite in your application with the C interface.</p>
+              </a>
+            </li>
+            <li>
+              <a class="tile" href="./faq.html">
+                <h3>FAQ</h3>
+                <p>Answers to the questions newcomers ask most often.</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="support-cta" aria-labelledby="support-heading">
+        <div class="container">
+          <h2 id="support-heading">Support the project</h2>
+          <p>
+            SQLite's development is funded by consortium members and
+            individual sponsors, and kept going by a small, responsive
+            community.
+            <a href="./support.html">See how to get help or contribute.</a>
+          </p>
+        </div>
+      </section>
     </main>
     <!--#include footer-->
-    <script type="module" src="./main.ts"></script>
   </body>
 </html>

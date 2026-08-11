@@ -229,8 +229,175 @@ img {
   margin-left: 0.2em;
 }
 
-main {
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+/* Prose pages (About, FAQ, etc.) read best at a narrower measure than the
+   full-bleed homepage sections, so it's a class on the content wrapper
+   rather than a blanket rule on <main>. */
+.prose {
   max-width: 40rem;
   margin: 0 auto;
   padding: 0 var(--space-4);
+}
+
+.button {
+  display: inline-block;
+  font: inherit;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-4);
+  border: 2px solid transparent;
+}
+
+.button-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.button-primary:visited {
+  color: #fff;
+}
+
+.button-primary:hover {
+  background: var(--color-accent);
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.button-secondary:visited {
+  color: var(--color-primary);
+}
+
+.button-secondary:hover {
+  background: var(--color-surface);
+}
+
+.hero {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-6) 0;
+}
+
+.hero-inner {
+  max-width: 44rem;
+}
+
+.hero h1 {
+  font-size: var(--text-3xl);
+  line-height: 1.2;
+  margin: 0 0 var(--space-4);
+  color: var(--color-primary);
+}
+
+.hero-lead {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-5);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.why-sqlite,
+.release,
+.explore-docs,
+.support-cta {
+  padding: var(--space-6) 0;
+}
+
+.why-sqlite h2,
+.release h2,
+.explore-docs h2,
+.support-cta h2 {
+  font-size: var(--text-2xl);
+  margin: 0 0 var(--space-4);
+}
+
+.card-grid,
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: var(--space-4);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+.card h3 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-lg);
+}
+
+.card p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.tile {
+  display: block;
+  height: 100%;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  text-decoration: none;
+  color: inherit;
+}
+
+.tile:hover {
+  border-color: var(--color-accent);
+}
+
+.tile h3 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-lg);
+  color: var(--color-primary);
+}
+
+.tile p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.release {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.release-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.release h2 {
+  margin-top: 0;
+}
+
+.release p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  max-width: 36rem;
 }
