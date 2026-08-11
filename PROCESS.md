@@ -78,22 +78,6 @@ one coherent site rather than nine independently styled ones.
    item shouldn't look different just because you've been to that page before
    ([`efe08ef`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-Nengke-Xiao/commit/efe08ef)).
 
-5. **Swapping the wordmark for the real logo meant sourcing, not
-   redrawing.** Moment 4 above deliberately avoided embedding SQLite's
-   trademarked logo file, using a text wordmark instead. Asked to use the
-   actual logo, I kept that trademark caution but resolved it differently
-   instead of dropping it: the header now points its `<img>` straight at
-   `https://sqlite.org/images/sqlite370_banner.svg` — sqlite.org's own
-   hosted asset, fetched live in the visitor's browser — rather than
-   downloading a copy into this repo and redistributing it from GitHub
-   Pages. That keeps the site referring to the real mark (nominative use)
-   without taking on a copy of someone else's copyrighted file, which
-   pairs with the footer's existing "unofficial redesign, not the official
-   SQLite website" disclaimer rather than undercutting it. The asset
-   happens to ship its own opaque white background, so it reads cleanly
-   as a badge on the teal header bar with no extra contrast work needed
-   ([`47a8b61`](https://github.com/comp4020-agentic-coding-studio/comp4020-crit2-Nengke-Xiao/commit/47a8b61)).
-
 ## Before you ship
 
 `pnpm check:evidence` verifies your citations resolve to real commits, that the
