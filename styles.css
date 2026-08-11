@@ -253,6 +253,26 @@ img {
   color: var(--color-text-secondary);
 }
 
+.code-block {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-size: var(--text-sm);
+}
+
+.step-list {
+  padding-left: var(--space-4);
+}
+
+.step-list li {
+  margin-bottom: var(--space-3);
+}
+
 .button {
   display: inline-block;
   font: inherit;

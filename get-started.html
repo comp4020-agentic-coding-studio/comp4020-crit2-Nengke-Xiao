@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get started with SQLite</title>
+    <meta
+      name="description"
+      content="Install the SQLite command-line shell, create your first database, and find the language binding you need."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!--#include header-->
+    <main id="main">
+      <article class="prose">
+        <h1>Get started with SQLite</h1>
+        <p class="lede">
+          Five minutes from nothing installed to your first query. No server
+          to set up first.
+        </p>
+
+        <h2>1. Install the command-line shell</h2>
+        <p>
+          The <code>sqlite3</code> shell is the fastest way to try SQLite
+          without writing any code. It's already packaged for most systems:
+        </p>
+        <div class="code-block">
+          <pre><code># macOS (Homebrew)
+brew install sqlite
+
+# Debian / Ubuntu
+sudo apt install sqlite3
+
+# Windows and everything else
+# grab the precompiled binary from the download page</code></pre>
+        </div>
+        <p>
+          Prefer to install by hand?
+          <a href="./download.html">Precompiled binaries for every platform</a>
+          are on the Download page.
+        </p>
+
+        <h2>2. Create your first database</h2>
+        <p>
+          A SQLite database is just a file. Opening a file that doesn't
+          exist yet creates it:
+        </p>
+        <div class="code-block">
+          <pre><code>sqlite3 hello.db
+
+sqlite&gt; CREATE TABLE notes (id INTEGER PRIMARY KEY, body TEXT);
+sqlite&gt; INSERT INTO notes (body) VALUES ('SQLite works with no setup');
+sqlite&gt; SELECT * FROM notes;
+1|SQLite works with no setup</code></pre>
+        </div>
+        <p>
+          That's it — <code>hello.db</code> is a complete, portable database
+          you can copy, back up, or ship inside an application.
+        </p>
+
+        <h2>3. Use it from your language</h2>
+        <p>
+          Most languages either bundle a SQLite driver or have a
+          well-maintained one a package manager away:
+        </p>
+        <ul class="step-list">
+          <li>
+            <strong>Python</strong> — <code>sqlite3</code> ships in the
+            standard library; no install needed.
+          </li>
+          <li>
+            <strong>Node.js</strong> — the built-in
+            <code>node:sqlite</code> module, or <code>better-sqlite3</code>
+            for older runtimes.
+          </li>
+          <li>
+            <strong>C / C++</strong> — link against the engine directly with
+            the <a href="./c-api.html">C/C++ API</a>.
+          </li>
+          <li>
+            <strong>Everything else</strong> — check your language's package
+            index; SQLite bindings exist for nearly all of them.
+          </li>
+        </ul>
+
+        <h2>Next steps</h2>
+        <p>
+          Ready to go deeper? The
+          <a href="./sql-syntax.html">SQL syntax reference</a> covers the
+          statements SQLite supports, the
+          <a href="./documentation.html">documentation hub</a> links to
+          guides on file format, performance, and concurrency, and the
+          <a href="./faq.html">FAQ</a> answers the questions newcomers ask
+          most.
+        </p>
+      </article>
+    </main>
+    <!--#include footer-->
+  </body>
+</html>
