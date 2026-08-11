@@ -4,10 +4,34 @@
     <a class="wordmark" href="./index.html">
       SQLite <span class="wordmark-tag">— a redesign concept</span>
     </a>
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-expanded="true"
+      aria-controls="primary-nav-list"
+    >
+      Menu
+    </button>
     <nav aria-label="Primary">
-      <ul class="nav-list">
+      <ul class="nav-list" id="primary-nav-list">
         <li><a href="./index.html">Home</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./get-started.html">Get Started</a></li>
+        <li><a href="./documentation.html">Documentation</a></li>
+        <li><a href="./download.html">Download</a></li>
+        <li><a href="./support.html">Support</a></li>
       </ul>
     </nav>
   </div>
 </header>
+<script>
+  (function () {
+    var toggle = document.querySelector(".nav-toggle");
+    var list = document.getElementById("primary-nav-list");
+    if (!toggle || !list) return;
+    toggle.addEventListener("click", function () {
+      var collapsed = list.classList.toggle("is-collapsed");
+      toggle.setAttribute("aria-expanded", String(!collapsed));
+    });
+  })();
+</script>
