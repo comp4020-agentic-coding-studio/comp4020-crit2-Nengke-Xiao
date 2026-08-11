@@ -153,6 +153,8 @@ img {
 
 .nav-toggle {
   display: none;
+  align-items: center;
+  min-height: 2.75rem;
   font: inherit;
   color: var(--color-text);
   background: var(--color-surface);
@@ -196,6 +198,15 @@ img {
   }
 
   .nav-list.is-collapsed {
+    display: none;
+  }
+}
+
+@media (width <= 480px) {
+  /* The tagline reads fine once there's room for it, but next to the
+     nav toggle on a phone-width header it just crowds the tap target —
+     the disclaimer already reappears in full in the footer. */
+  .wordmark-tag {
     display: none;
   }
 }
