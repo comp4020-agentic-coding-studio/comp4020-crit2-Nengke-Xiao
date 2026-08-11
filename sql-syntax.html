@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL syntax reference — SQLite</title>
+    <meta
+      name="description"
+      content="The SQL statements SQLite supports, grouped by what they do, with short examples."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!--#include header-->
+    <main id="main">
+      <article class="prose">
+        <h1>SQL syntax</h1>
+        <p class="lede">
+          SQLite implements most of standard SQL, plus a handful of its own
+          extensions. This page groups the statements you'll use most by
+          what they do, each with a minimal example.
+        </p>
+
+        <h2>Defining structure</h2>
+
+        <h3>CREATE TABLE</h3>
+        <div class="code-block">
+          <pre><code>CREATE TABLE users (
+  id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT UNIQUE
+);</code></pre>
+        </div>
+
+        <h3>CREATE INDEX</h3>
+        <div class="code-block">
+          <pre><code>CREATE INDEX idx_users_email ON users (email);</code></pre>
+        </div>
+
+        <h3>ALTER TABLE / DROP TABLE</h3>
+        <div class="code-block">
+          <pre><code>ALTER TABLE users ADD COLUMN created_at TEXT;
+DROP TABLE users;</code></pre>
+        </div>
+
+        <h2>Reading and writing rows</h2>
+
+        <h3>SELECT</h3>
+        <div class="code-block">
+          <pre><code>SELECT id, name FROM users
+WHERE email LIKE '%@example.com'
+ORDER BY name
+LIMIT 20;</code></pre>
+        </div>
+
+        <h3>INSERT</h3>
+        <div class="code-block">
+          <pre><code>INSERT INTO users (name, email)
+VALUES ('Ada', 'ada@example.com');</code></pre>
+        </div>
+
+        <h3>UPDATE / DELETE</h3>
+        <div class="code-block">
+          <pre><code>UPDATE users SET name = 'Ada Lovelace' WHERE id = 1;
+DELETE FROM users WHERE id = 1;</code></pre>
+        </div>
+
+        <h2>Transactions</h2>
+        <p>
+          Wrap related statements in a transaction so they succeed or fail
+          together:
+        </p>
+        <div class="code-block">
+          <pre><code>BEGIN;
+UPDATE accounts SET balance = balance - 100 WHERE id = 1;
+UPDATE accounts SET balance = balance + 100 WHERE id = 2;
+COMMIT;</code></pre>
+        </div>
+
+        <h2>SQLite-specific extensions</h2>
+
+        <h3>Upsert (INSERT ... ON CONFLICT)</h3>
+        <p>Insert a row, or update it if it already exists:</p>
+        <div class="code-block">
+          <pre><code>INSERT INTO users (id, name) VALUES (1, 'Ada')
+ON CONFLICT (id) DO UPDATE SET name = excluded.name;</code></pre>
+        </div>
+
+        <h3>RETURNING</h3>
+        <p>Get the row back from an insert, update, or delete:</p>
+        <div class="code-block">
+          <pre><code>INSERT INTO users (name) VALUES ('Grace')
+RETURNING id, name;</code></pre>
+        </div>
+
+        <h3>JSON functions</h3>
+        <p>Query and shape JSON stored in a text column:</p>
+        <div class="code-block">
+          <pre><code>SELECT json_extract(profile, '$.city') FROM users
+WHERE json_extract(profile, '$.active') = 1;</code></pre>
+        </div>
+
+        <h2>The full grammar</h2>
+        <p>
+          This page covers what most applications need. For every clause,
+          edge case, and syntax diagram, see the
+          <a
+            class="external-link"
+            href="https://www.sqlite.org/lang.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            >complete SQL syntax grammar<span class="visually-hidden"
+              > (opens in a new tab)</span
+            ></a
+          >. To call any of this from your own code, see the
+          <a href="./c-api.html">C/C++ API</a>.
+        </p>
+      </article>
+    </main>
+    <!--#include footer-->
+  </body>
+</html>
